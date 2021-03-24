@@ -19,7 +19,7 @@ class PersonTest {
     @Test
     void setFirstname() {
         person.setFirstName("Alfred");
-        assertEquals("Alfred",person.getFirstname());
+        assertEquals("Alfred",person.getFirstName());
     }
 
     @Test

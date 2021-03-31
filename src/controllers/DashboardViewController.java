@@ -32,8 +32,12 @@ public class DashboardViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        //add Student's and professor's to the ListView
         studentsListView.getItems().addAll(DBUtility.getStudentsFromDB());
-        DBUtility.getProfessorsFromDB();
+        professorsListView.getItems().addAll(DBUtility.getProfessorsFromDB());
+
+        //update the label's to show how many students and professors are in each list
+        studentsLabel.setText("Students : "+studentsListView.getItems().size());
     }
 
 //    @FXML

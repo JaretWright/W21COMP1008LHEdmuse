@@ -38,6 +38,11 @@ public class DashboardViewController implements Initializable {
 
         //update the label's to show how many students and professors are in each list
         studentsLabel.setText("Students : "+studentsListView.getItems().size());
+        professorsLabel.setText("Professors : "+professorsListView.getItems().size());
+
+        //1. a new view / controller to move to
+        //2. code to recognize when the "create student" button is pushed to change scenes
+
     }
 
 //    @FXML

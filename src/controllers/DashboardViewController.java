@@ -1,14 +1,21 @@
 package controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.stage.Stage;
 import models.Person;
 import models.Professor;
 import models.Student;
 import utilities.DBUtility;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -39,13 +46,18 @@ public class DashboardViewController implements Initializable {
         //update the label's to show how many students and professors are in each list
         studentsLabel.setText("Students : "+studentsListView.getItems().size());
         professorsLabel.setText("Professors : "+professorsListView.getItems().size());
-
-        //1. a new view / controller to move to
-        //2. code to recognize when the "create student" button is pushed to change scenes
-
     }
 
-//    @FXML
-//    private ListView<?> coursesListView;
+    @FXML
+    private void createStudentButtonPushed(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../views/createStudentView.fxml"));
+        Scene scene = new Scene(root);
 
+        //get the stage from the event that was passed in
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+
+        stage.setScene(scene);
+        stage.setTitle("EdMuse Create a new student");
+        stage.show();
+    }
 }

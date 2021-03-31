@@ -36,7 +36,7 @@
                      <children>
                         <Label fx:id="studentsLabel" text="Students" />
                         <ListView fx:id="studentsListView" />
-                        <Button mnemonicParsing="false" text="Create Student" />
+                        <Button mnemonicParsing="false" onAction="#createStudentButtonPushed" text="Create Student" />
                      </children>
                   </VBox>
                   <VBox spacing="5.0" GridPane.rowIndex="1">

@@ -55,6 +55,8 @@ public class Person {
     }
 
     public void setBirthday(LocalDate birthday) {
+        if (birthday == null)
+            throw new IllegalArgumentException("birthday must have a date");
         if (birthday.isAfter(LocalDate.now()))
             throw new IllegalArgumentException("birthday cannot be in the future");
         this.birthday = birthday;

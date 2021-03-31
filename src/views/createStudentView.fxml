@@ -45,7 +45,7 @@
                   <DatePicker fx:id="birthday" editable="false" prefWidth="375.0" promptText="Select birthday" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                </children>
             </GridPane>
-            <Button mnemonicParsing="false" text="Create Student">
+            <Button mnemonicParsing="false" onAction="#createNewStudent" text="Create Student">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin>

@@ -1,30 +1,25 @@
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.Period;
-import java.util.ArrayList;
-import java.util.TreeMap;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
-public class Main {
+public class Main extends Application {
     public static void main(String[] args) {
+        launch(args);
+    }
 
-
-       //ArrayList example of handling grades (no association with the courses)
-       ArrayList<Integer> awesomeGrades = new ArrayList<>();
-       awesomeGrades.add(99);
-       awesomeGrades.add(100);
-       awesomeGrades.add(97);
-       for (Integer grade : awesomeGrades)
-           System.out.println(grade);
-
-       //doing the same thing with a TreeMap (associating with the courses)
-       TreeMap<String, Integer> grades = new TreeMap<>();
-       grades.put("COMP 1008",100);
-       grades.put("COMP 1030", 97);
-       grades.put("COMP 1011", 98);
-
-       //use the keys to get the values
-       for (String courseCode : grades.keySet())
-           System.out.printf("Course: %s   Grade Earned: %d%n",courseCode, grades.get(courseCode));
-
+    /**
+     * Load the fxml file and attach it to the stage object
+     * @param stage
+     * @throws Exception
+     */
+    @Override
+    public void start(Stage stage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("views/dashboardView.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setTitle("EdMuse Dashboard");
+        stage.show();
     }
 }

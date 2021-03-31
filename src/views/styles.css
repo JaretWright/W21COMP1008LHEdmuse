@@ -1,0 +1,14 @@
+.root{
+    -fx-background-color: linear-gradient(from 10px 10px to 400px 400px, #3d353c, #454654);
+    -fx-font-family: "Comic Sans MS";
+    -fx-font-size: 18px;
+}
+
+.label{
+    -fx-text-fill: #71baf8;
+    -fx-font-size: 24px;
+}
+
+.button {
+    -fx-background-radius: 10;
+}

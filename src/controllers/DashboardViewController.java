@@ -14,9 +14,11 @@ import models.Person;
 import models.Professor;
 import models.Student;
 import utilities.DBUtility;
+import utilities.SceneChanger;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -40,7 +42,11 @@ public class DashboardViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //add Student's and professor's to the ListView
-        studentsListView.getItems().addAll(DBUtility.getStudentsFromDB());
+        try {
+            studentsListView.getItems().addAll(DBUtility.getStudentsFromDB());
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
         professorsListView.getItems().addAll(DBUtility.getProfessorsFromDB());
 
         //update the label's to show how many students and professors are in each list
@@ -50,14 +56,6 @@ public class DashboardViewController implements Initializable {
 
     @FXML
     private void createStudentButtonPushed(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../views/createStudentView.fxml"));
-        Scene scene = new Scene(root);
-
-        //get the stage from the event that was passed in
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-
-        stage.setScene(scene);
-        stage.setTitle("EdMuse Create a new student");
-        stage.show();
+        SceneChanger.changeScenes(event,"../views/createStudentView.fxml","EdMuse Create a new student");
     }
 }

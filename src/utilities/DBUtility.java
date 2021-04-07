@@ -80,5 +80,57 @@ public class DBUtility {
         return professors;
     }
 
+    /**
+     * This method will insert a Student object  into  the database and return the student number
+     */
+    public static int insertStudentIntoDB(Student student) throws SQLException {
+        int studentNum = -1;
+
+        //create objects to access and read from the DB
+        Connection conn = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+
+        try{
+            //1. connect to the DB
+            conn = DriverManager.getConnection(connString, user, password);
+
+            //2. create our sql statement and prepare it
+            statement = conn.prepareStatement("INSERT INTO students (firstName, lastName, address, birthday) " +
+                                                "VALUES(?,?,?,?);", new String[]{"studentNum"});
+
+            //3.  bind the values to the datatypes
+            statement.setString(1, student.getFirstName());
+            statement.setString(2, student.getLastName());
+            statement.setString(3, student.getAddress());
+            statement.setDate(4, Date.valueOf(student.getBirthday()));
+
+            //4.  execute the insert
+            statement.executeUpdate();
+
+            //5.  get the student number returned
+            resultSet = statement.getGeneratedKeys();
+
+            //4.  loop over the result set and create student objects
+            while (resultSet.next())
+            {
+                studentNum = resultSet.getInt(1);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        finally{
+            if (conn != null)
+                conn.close();
+
+            if (statement != null)
+                statement.close();
+
+            if (resultSet != null)
+                resultSet.close();
+        }
+        return studentNum;
+    }
+
 
 }

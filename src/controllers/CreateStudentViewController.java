@@ -12,10 +12,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import models.Student;
+import utilities.DBUtility;
 import utilities.SceneChanger;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
@@ -45,14 +47,20 @@ public class CreateStudentViewController implements Initializable {
      * When the button is pushed, try to create a new Student object
      */
     @FXML
-    private void createNewStudent()
-    {
+    private void createNewStudent() throws SQLException {
         try {
             Student newStudent = new Student(firstNameTextField.getText(),
                     lastNameTextField.getText(),
                     addressTextField.getText(),
-                    birthday.getValue(),
-                    20000001);
+                    birthday.getValue());
+
+            //get a studentNum from the DB and update the Student object
+            int studentNum = DBUtility.insertStudentIntoDB(newStudent);
+
+            if (studentNum>0)
+            {
+                newStudent.setStudentNum(studentNum);
+            }
             msgLabel.setText("New Student: "+newStudent.toString());
         } catch(IllegalArgumentException e)
         {

@@ -15,6 +15,11 @@ public class Student extends Person{
         grades = new TreeMap<>();
     }
 
+    public Student(String firstName, String lastName, String address, LocalDate birthday) {
+        super(firstName, lastName, address, birthday);
+        grades = new TreeMap<>();
+    }
+
     public int getStudentNum() {
         return studentNum;
     }

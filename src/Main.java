@@ -3,6 +3,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import models.Person;
+
+import java.time.LocalDate;
 
 public class Main extends Application {
     public static void main(String[] args) {

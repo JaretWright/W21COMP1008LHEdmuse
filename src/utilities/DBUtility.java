@@ -132,5 +132,12 @@ public class DBUtility {
         return studentNum;
     }
 
+    public static ArrayList<String> getMajors()
+    {
+        ArrayList<String> majors = new ArrayList<>();
+        majors.addAll(Arrays.asList("Acupuncture","Advanced Care Paramedic","Architectural Technology",
+                "Art and Design Fundamentals","Artificial Intelligence", "Aviation Management","Computer Science"));
+        return majors;
+    }
 
 }

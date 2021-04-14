@@ -15,6 +15,11 @@ public class Professor extends Person{
         teachables = new ArrayList<>();
     }
 
+    public Professor(String firstName, String lastName, String address, LocalDate birthday, ArrayList<String> teachables) {
+        super(firstName, lastName, address, birthday);
+        this.teachables = teachables;
+    }
+
     /**
      * This method will validate that the teachable subject is part of a list of valid course
      * codes that we get from the DB. If it is valid, it will be added to the list of teachable subjects

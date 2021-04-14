@@ -58,4 +58,9 @@ public class DashboardViewController implements Initializable {
     private void createStudentButtonPushed(ActionEvent event) throws IOException {
         SceneChanger.changeScenes(event,"../views/createStudentView.fxml","EdMuse Create a new student");
     }
+
+    @FXML
+    private void createProfessorButtonPushed(ActionEvent event) throws IOException{
+        SceneChanger.changeScenes(event, "../views/createProfessorView.fxml","EdMuse - Create Professor");
+    }
 }

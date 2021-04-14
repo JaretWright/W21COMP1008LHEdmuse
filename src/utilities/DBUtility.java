@@ -70,6 +70,26 @@ public class DBUtility {
         return students;
     }
 
+    public static ArrayList<String> getValidCourseCodesFromDB()  {
+        ArrayList<String> courseCodes = new ArrayList<>();
+
+        try(
+                Connection conn = DriverManager.getConnection(connString, user, password);
+                Statement statement = conn.createStatement();
+                ResultSet resultSet = statement.executeQuery("SELECT courseCode FROM approvedCourses");
+                )
+        {
+            //4.  loop over the result set and create student objects
+            while (resultSet.next())
+                courseCodes.add(resultSet.getString(1));
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return courseCodes;
+    }
+
     public static ArrayList<Professor> getProfessorsFromDB()
     {
         ArrayList<Professor> professors = new ArrayList<>();

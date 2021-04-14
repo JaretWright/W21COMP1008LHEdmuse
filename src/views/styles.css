@@ -4,6 +4,10 @@
     -fx-font-size: 18px;
 }
 
+.check-box{
+    -fx-text-fill: #71baf8;
+}
+
 .label{
     -fx-text-fill: #71baf8;
     -fx-font-size: 24px;
